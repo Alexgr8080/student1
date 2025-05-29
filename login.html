@@ -1,0 +1,315 @@
+<<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic Supervision System - Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f9fafb;
+        }
+        .gradient-hero {
+            background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+        }
+        .gradient-form-header {
+            background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+        }
+        .shadow-card-enhanced {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .auth-message {
+            display: none;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            border-radius: 0.375rem;
+            font-weight: 500;
+            border-width: 1px;
+        }
+        .auth-success {
+            background-color: #d1fae5;
+            border-color: #34d399;
+            color: #065f46;
+        }
+        .auth-failed {
+            background-color: #fee2e2;
+            border-color: #f87171;
+            color: #991b1b;
+        }
+        .auth-locked {
+            background-color: #fef3c7;
+            border-color: #fcd34d;
+            color: #92400e;
+        }
+        .btn-primary-gradient {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+        }
+        .btn-primary-gradient:hover {
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+        }
+        .btn-disabled-style {
+            opacity: 0.65;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+
+<body class="flex flex-col min-h-screen">
+    <header class="bg-white shadow-sm">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <i class="fas fa-graduation-cap text-4xl text-blue-600 mr-3"></i>
+                <h1 class="text-3xl font-semibold text-gray-800">Academic Supervision System</h1>
+            </div>
+            <div>
+                <a href="help-and-contact.html" class="text-gray-600 hover:text-blue-600 mx-3 px-3 py-2 rounded-md hover:bg-gray-100 transition-colors">Help</a>
+                <a href="help-and-contact.html#contact" class="text-gray-600 hover:text-blue-600 mx-3 px-3 py-2 rounded-md hover:bg-gray-100 transition-colors">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <section class="gradient-hero text-white py-16 md:py-24">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">Welcome Back!</h2>
+                <p class="text-xl md:text-2xl mb-10 opacity-90">Log in to efficiently manage your academic supervision tasks.</p>
+            </div>
+        </section>
+
+        <section id="login" class="py-12 md:py-16 bg-gray-100">
+            <div class="container mx-auto px-6">
+                <div class="max-w-lg mx-auto bg-white rounded-xl shadow-card-enhanced overflow-hidden">
+                    <div class="gradient-form-header py-5">
+                        <h2 class="text-2xl font-bold text-center text-white">Secure Portal Login</h2>
+                    </div>
+
+                    <div class="p-8 md:p-10">
+                        <div id="auth-success" class="auth-message auth-success"></div>
+                        <div id="auth-failed" class="auth-message auth-failed"></div>
+                        <div id="auth-locked" class="auth-message auth-locked"></div>
+
+                        <form id="login-form" class="space-y-6">
+                            <div>
+                                <label for="email" class="block text-gray-700 font-medium mb-2">Email Address</label>
+                                <div class="relative">
+                                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                        <i class="fas fa-envelope text-gray-400"></i>
+                                    </div>
+                                    <input type="email" id="email" name="email" class="w-full pl-10 pr-3 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow" placeholder="your.email@university.edu" required>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="flex items-center justify-between mb-2">
+                                    <label for="password" class="block text-gray-700 font-medium">Password</label>
+                                    <a href="#" id="forgot-password-link" class="text-sm text-blue-600 hover:text-blue-800 hover:underline">Forgot password?</a>
+                                </div>
+                                <div class="relative">
+                                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                        <i class="fas fa-lock text-gray-400"></i>
+                                    </div>
+                                    <input type="password" id="password" name="password" class="w-full pl-10 pr-3 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow" required>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center">
+                                    <input type="checkbox" id="remember" name="remember" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+                                    <label for="remember" class="ml-2 block text-sm text-gray-700">Remember me</label>
+                                </div>
+                            </div>
+
+                            <button type="submit" id="signInButton" class="w-full btn-primary-gradient text-white font-bold py-3 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition-all duration-300 ease-in-out transform hover:scale-105">
+                                Sign In
+                            </button>
+                        </form>
+
+                        <div class="mt-8 text-center text-sm">
+                            <p class="text-gray-600 mb-2">Academic staff without an account?</p>
+                            <a href="#" class="text-blue-600 hover:text-blue-800 font-medium hover:underline">Contact your administrator</a>
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-50 px-6 py-5 border-t border-gray-200">
+                        <div class="flex flex-col sm:flex-row justify-center items-center text-xs text-gray-500 space-y-2 sm:space-y-0 sm:space-x-6">
+                            <div class="flex items-center">
+                                <i class="fas fa-shield-alt mr-1.5 text-gray-400"></i>
+                                <span>Secured Login Environment</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-info-circle mr-1.5 text-gray-400"></i>
+                                <span>Use University Credentials</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-10">
+        <div class="container mx-auto px-6 text-center">
+            <div class="mb-4 space-x-2">
+                <a href="terms-of-service.html" class="text-gray-400 hover:text-white hover:underline">Terms of Service</a>
+                <span class="text-gray-500">|</span>
+                <a href="privacy-policy.html" class="text-gray-400 hover:text-white hover:underline">Privacy Policy</a>
+                <span class="text-gray-500">|</span>
+                <a href="help-and-contact.html#contact" class="text-gray-400 hover:text-white hover:underline">Contact Support</a>
+            </div>
+            <p class="text-gray-400 text-sm">&copy; <span id="currentYear"></span> University Academic Supervision System. All rights reserved.</p>
+        </div>
+    </footer>
+<body class="flex flex-col min-h-screen">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="./js/supabaseClient.js"></script>
+    <script src="./js/script.js"></script>
+    <script src="./js/auth.js"></script>
+    
+    <script>
+        // Utility functions for showing messages (from script.js or login.html itself)
+        function showLoginError(message) {
+            const authFailed = document.getElementById('auth-failed');
+            if (authFailed) {
+                authFailed.textContent = message;
+                authFailed.style.display = 'block';
+                document.getElementById('auth-success').style.display = 'none';
+                document.getElementById('auth-locked').style.display = 'none';
+            }
+        }
+
+        function showLoginSuccess(message) {
+            const authSuccess = document.getElementById('auth-success');
+            if (authSuccess) {
+                authSuccess.textContent = message;
+                authSuccess.style.display = 'block';
+                document.getElementById('auth-failed').style.display = 'none';
+                document.getElementById('auth-locked').style.display = 'none';
+            }
+        }
+
+        // Function to redirect user based on role (could be in script.js or auth.js)
+        function redirectLoggedInUser(user) {
+            // PathConfig should be available from script.js
+            if (!user || !window.getUserOrganizationData || !window.PathConfig) {
+                console.warn('User, organization data, or PathConfig not available for redirection.');
+                window.location.href = '/login.html'; // Fallback to login
+                return;
+            }
+
+            const orgData = window.getUserOrganizationData();
+            if (orgData && orgData.hasAnyRole('admin')) {
+                window.location.href = window.PathConfig.ADMIN_DASHBOARD;
+            } else if (orgData && orgData.hasAnyRole('student')) {
+                window.location.href = window.PathConfig.STUDENT_DASHBOARD;
+            } else if (orgData && orgData.hasAnyRole('supervisor')) {
+                window.location.href = window.PathConfig.SUPERVISOR_DASHBOARD;
+            } else if (orgData && orgData.hasAnyRole('committee')) {
+                window.location.href = window.PathConfig.COMMITTEE_DASHBOARD;
+            } else if (orgData && orgData.hasAnyRole('marker')) {
+                window.location.href = window.PathConfig.MARKERS;
+            } else {
+                console.log('User has no specific role, redirecting to default login or error page.');
+                window.location.href = window.PathConfig.LOGIN + '?error=' + encodeURIComponent('No recognized role found. Please contact support.');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const loginForm = document.getElementById('login-form');
+            if (loginForm) {
+                loginForm.addEventListener('submit', async (event) => {
+                    event.preventDefault();
+                    const email = document.getElementById('email').value;
+                    const password = document.getElementById('password').value;
+
+                    try {
+                        const result = await window.loginWithEmailPassword(email, password); // Use window.loginWithEmailPassword
+                        if (result.success) {
+                            showLoginSuccess('Login successful! Redirecting...');
+                            // Give a small delay before redirecting
+                            setTimeout(async () => {
+                                // Re-initialize auth module to get updated user and org data
+                                const { user } = await window.initializeAuthModule(); // Use window.initializeAuthModule
+                                if (user) {
+                                    redirectLoggedInUser(user);
+                                } else {
+                                    showLoginError('Login successful but could not retrieve user data for redirection.');
+                                }
+                            }, 1000);
+                        } else {
+                            showLoginError(result.error?.message || 'Login failed. Please check your credentials.');
+                        }
+                    } catch (error) {
+                        console.error('Login submission error:', error);
+                        showLoginError(`An unexpected error occurred during login: ${error.message}`);
+                    }
+                });
+            }
+
+            // Auto-fill from URL parameters (e.g., after password reset)
+            const urlParams = new URLSearchParams(window.location.search);
+            const prefillEmail = urlParams.get('email');
+            const prefillPassword = urlParams.get('password'); // Not recommended for production, but for demonstration
+
+            if (prefillEmail) {
+                const emailInput = document.getElementById('email');
+                if (emailInput) {
+                    emailInput.value = prefillEmail;
+                }
+            }
+
+            if (prefillPassword) {
+                const passwordInput = document.getElementById('password');
+                if (passwordInput) {
+                    passwordInput.value = prefillPassword;
+                }
+            }
+            
+            // Check for auth module ready event
+            window.addEventListener('authModuleReady', (event) => {
+              const { user } = event.detail || {};
+              if (user) {
+                // User is already logged in, redirect to appropriate dashboard
+                redirectLoggedInUser(user);
+              }
+            });
+            
+            // Handle errors
+            window.addEventListener('authModuleError', (event) => {
+              const { error } = event.detail || {};
+              if (error) {
+                showLoginError(`Authentication error: ${error.message}`);
+              }
+            });
+            
+            // Check for redirect params (e.g., after password reset)
+            const errorMessage = urlParams.get('error');
+            const successMessage = urlParams.get('success');
+            
+            if (errorMessage) {
+              showLoginError(decodeURIComponent(errorMessage));
+            }
+            
+            if (successMessage) {
+              showLoginSuccess(decodeURIComponent(successMessage));
+            }
+
+            // Initialize the auth module when the DOM is loaded
+            // This is crucial for checking existing sessions
+            window.initializeAuthModule(); // Call the global function
+        });
+    </script>
+          <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+    <script src="./JS/supabaseClient.js"></script>
+    <script src="./JS/supabaseClient.js"></script>
+     <script src="./js/events.js"></script>
+    <script src="./JS/auth.js"></script>
+    <script src="./JS/script.js"></script>
+    <script src="./js/app.js"></script>
+</body>
+</html>
